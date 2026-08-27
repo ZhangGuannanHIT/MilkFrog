@@ -6,18 +6,17 @@ struct Index {
   @State buttonText: string = '循环播放';
   private videoController: VideoController = new VideoController();
 
-  // 页面初次加载：展示首帧作为视频封面
+  // 页面初次加载
   aboutToAppear(): void {
     this.showFirstFrame();
   }
 
-  // 视频切换后的回调：新Video组件已创建完毕
+  // 视频切换后
   onVideoSwitch(): void {
-    // 始终展示新视频的首帧封面（播放中切换已事先停止，此处不再恢复播放）
     this.showFirstFrame();
   }
 
-  // 短暂启播后暂停并回到起始位置，将首帧固定在页面上
+  // 首帧固定
   private showFirstFrame(): void {
     this.videoController.start();
     setTimeout(() => {
@@ -28,8 +27,6 @@ struct Index {
 
   build() {
     Stack({ alignContent: Alignment.Bottom }) {
-      // 使用 if/else 条件渲染：视频1与Cover缩放永久绑定，视频2与Contain缩放永久绑定
-      // 切换时整个Video组件销毁并重建，确保源文件和缩放同步生效
       if (this.isVideo1) {
         Video({
           src: $rawfile('1.mp4'),
@@ -37,7 +34,7 @@ struct Index {
         })
           .width('100%')
           .height('100%')
-          .objectFit(ImageFit.Cover) // 横向视频：等比放大填满屏幕高度，左右裁剪，展示中间适配手机的细长条
+          .objectFit(ImageFit.Cover) 
           .controls(false)
           .loop(this.isLooping)
       } else {
@@ -47,15 +44,15 @@ struct Index {
         })
           .width('100%')
           .height('100%')
-          .objectFit(ImageFit.Contain) // 竖屏视频：完整适配手机屏幕
+          .objectFit(ImageFit.Contain) 
           .controls(false)
           .loop(this.isLooping)
-          .backgroundColor(Color.White) // 覆盖视频组件内部默认黑边
+          .backgroundColor(Color.White) 
       }
 
-      // 底部按钮区域
+      // 底部按钮
       Row({ space: 12 }) {
-        // 循环播放/停止播放 按钮（居中长条）
+
         Button(this.buttonText)
           .width('65%')
           .height(44)
@@ -74,7 +71,6 @@ struct Index {
             }
           })
 
-        // 切换视频按钮
         Button() {
           Text('⇄')
             .fontSize(22)
@@ -86,9 +82,7 @@ struct Index {
           .backgroundColor('#2196F3')
           .onClick(() => {
             if (this.isLooping) {
-              // 1. 停止播放
               this.videoController.stop();
-              // 2. 改变播放按钮状态
               this.isLooping = false;
               this.buttonText = '循环播放';
             }
