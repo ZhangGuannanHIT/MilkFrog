@@ -1,5 +1,2 @@
-android/**/*.java linguist-detectable
-android/**/*.kt linguist-detectable
-
-harmonyos/**/*.ets linguist-detectable
-harmonyos/**/*.ts linguist-detectable
+android/** linguist-detectable
+harmonyos/** linguist-detectable
