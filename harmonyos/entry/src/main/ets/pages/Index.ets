@@ -86,7 +86,6 @@ struct Index {
               this.isLooping = false;
               this.buttonText = '循环播放';
             }
-            // 3. 切换视频（触发onVideoSwitch → showFirstFrame）
             this.isVideo1 = !this.isVideo1;
           })
       }
