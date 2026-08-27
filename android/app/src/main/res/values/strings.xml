@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MilkFrog</string>
+    <string name="loop_play">循环播放</string>
+    <string name="stop_play">停止播放</string>
+</resources>

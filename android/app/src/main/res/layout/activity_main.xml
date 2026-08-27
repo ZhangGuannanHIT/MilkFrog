@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipChildren="true">
+
+    <!-- VideoView fills entire screen; scaling is adjusted programmatically -->
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Bottom button bar -->
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="36dp">
+
+        <!-- Loop toggle button (wide pill) -->
+        <Button
+            android:id="@+id/btn_loop"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="0.65"
+            android:text="@string/loop_play"
+            android:textColor="@color/button_text_white"
+            android:textSize="16sp"
+            android:layout_marginEnd="6dp" />
+
+        <!-- Video switch button (circle) -->
+        <Button
+            android:id="@+id/btn_switch"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="⇄"
+            android:textColor="@color/button_text_white"
+            android:textSize="22sp"
+            android:layout_marginStart="6dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
